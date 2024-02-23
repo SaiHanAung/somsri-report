@@ -4,6 +4,7 @@ const { c } = useCL();
 const route = useRoute();
 
 const { pages }: any = inject('pages');
+const isMobile: any = inject('isMobile');
 
 const page = pages.value.filter((page: Record<string, Object>) => page?.page_url == route.path)[0]
 const error = reactive({ value: "" });
@@ -36,6 +37,6 @@ if (page?.title) {
         <div v-if="!page.app_url" class="grid content-center justify-center h-full">
             <p class="text-center text-[#a52241] font-bold text-xl">ยังไม่มีลิงค์ Power bi</p>
         </div>
-        <iframe v-else class="rounded-2xl h-full w-full" :src="page.app_url"></iframe>
+        <iframe v-else :class="['rounded-2xl h-full w-full', isMobile && 'relative top-12']" :src="page.app_url"></iframe>
     </div>
 </template>

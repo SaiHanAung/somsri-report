@@ -10,12 +10,31 @@ useHead({
     }
   ],
 });
+
+const isMobile = ref(false)
+
+onMounted(() => {
+  window.addEventListener('resize', () => checkWindowSize());
+})
+
+function checkWindowSize() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  if (width <= 768 && height <= 1024) {
+    isMobile.value = true
+  } else {
+    isMobile.value = false
+  }
+}
+
+provide('isMobile', isMobile);
 </script>
 <template>
   <ClientOnly>
     <Toaster richColors position="top-right" />
   </ClientOnly>
-  <NuxtLayout>
+  <NuxtLayout :onload="checkWindowSize()">
     <NuxtPage class="w-full" />
   </NuxtLayout>
 </template>

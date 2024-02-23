@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set } from "firebase/database";
+import { getDatabase, onValue, ref, get, set } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth"
 
 export default function () {
@@ -26,5 +26,5 @@ export default function () {
     const getData = get;
     const setData = set;
 
-    return { db, dbRef, getData, setData, auth, signIn, checkAuth, logOut }
+    return { db, dbRef, getData, onValue, setData, auth, signIn, checkAuth, logOut }
 }

@@ -1,7 +1,8 @@
 <script setup lang="ts">
+const pages: any = inject('pages');
 </script>
 <template>
-    <div class="grid content-center justify-center">
+    <div class="grid content-center justify-center" v-if="!pages.pending">
         <p class="flex items-center gap-1 font-bold text-xl text-[#a52241]">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                 class="w-6 h-6 justify-items-stretch">

@@ -1,4 +1,6 @@
 # Nuxt dev/build outputs
+.firebase
+.firebaserc
 .output
 .data
 .nuxt

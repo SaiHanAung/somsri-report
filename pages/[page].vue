@@ -14,7 +14,7 @@ const updateFrame = () => {
             title: page.value.title || ""
         })
 
-        if (!page.value?.app_url.includes('powerbi')) {
+        if (page.value?.app_url && !page.value?.app_url?.includes('powerbi')) {
             $toast.error('ลิงค์มีปัญหา หรือลิงค์อาจไม่ถูกต้อง')
             clearError({ redirect: '/' })
         }

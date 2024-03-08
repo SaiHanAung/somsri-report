@@ -6,15 +6,14 @@ const { db, dbRef, getData, onValue, setData } = useFbCRUD();
 const { c } = useCL();
 const reportDb = dbRef(db, 'reports')
 
+const pages = reactive({
+    value: Array,
+    pending: true
+})
 
 const { pending, data: datas } = await useLazyAsyncData('refreshPages', () => getData(reportDb).then((snapshot: any) => snapshot.val()))
 const refresh = () => refreshNuxtData('refreshPages').then(() => {
     pages.value = datas
-})
-
-const pages = reactive({
-    value: Array,
-    pending: true
 })
 
 onValue(reportDb, (snapshot: any) => {
@@ -28,6 +27,7 @@ const update = () => {
 
 provide('pages', { pages, refresh })
 </script>
+
 <template>
     <ClientOnly>
         <div class="h-screen p-3 flex gap-3">
